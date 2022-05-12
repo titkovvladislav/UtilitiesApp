@@ -1,0 +1,54 @@
+.auth-container {
+  background: #F9F9F9;
+  height: 100vh;
+  padding: 30px;
+}
+
+.logo {
+  text-align: center;
+
+}
+.auth-form {
+  padding: 100px 50px;
+  width: 375px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 75px;
+  color: #505050;
+}
+
+.login-title {
+  display: flex;
+  align-items: center;
+  padding: 90px 0 20px;
+  & h2:nth-child(1){
+    font-size: 35px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  & h2:nth-child(3){
+    font-size: 20px;
+    font-weight: 500;
+    color: #D1D1D1;
+    cursor: pointer;
+    &:hover {
+      transition: color 400ms;
+      color: rgba(80, 80, 80, 0.5);
+    }
+  }
+  & span {
+    font-size: 45px;
+    padding: 0 10px 11px 10px;
+    pointer-events: none;
+  }
+
+}
+
+.auth-form_field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.auth-form_btn {
+  text-align: end;
+  //padding-bottom: ;
+}

@@ -1,0 +1,62 @@
+<div class="nav-bar">
+  <div class="logo">
+    <img src="./assets/img/mainLogo.png" alt="logo">
+  </div>
+  <div class="menu">
+    <h2>Menu</h2>
+    <ul>
+      <li>
+        <a class="menu-link" href="#">
+          <span></span>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a class="menu-link" href="#">
+          <span></span>
+          <p>Schedule Reminder</p>
+        </a>
+      </li>
+      <li>
+        <a class="menu-link" href="#">
+          <span></span>
+          <p>Reports</p>
+        </a>
+      </li>
+      <li>
+        <a class="menu-link" href="#">
+          <span></span>
+          <p>Notifications</p>
+        </a>
+      </li>
+      <li>
+        <a class="menu-link" href="#">
+          <span></span>
+          <p>Settings</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="about-user">
+    <div class="user-logo"></div>
+    <div class="user-info">
+      <p>Mathew Perry</p>
+      <p>mathewperry@xyz.com</p>
+    </div>
+    <div class="user-menu">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

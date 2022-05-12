@@ -1,0 +1,66 @@
+
+<div class="auth-container">
+  <form class="auth-form" [formGroup]="authDataGroup">
+    <div class="logo">
+      <img src="./assets/img/mainLogoLarge.png" alt="logo">
+    </div>
+
+    <div class="login-title">
+      <h2 >{{formTitle[0]}}</h2>
+      <span>/</span>
+      <h2 (click)="changeForm()">{{formTitle[1]}}</h2>
+    </div>
+
+    <div class="auth-form_inputs">
+
+      <mat-form-field class="auth-form_field" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="login" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="authDataGroup.controls['login'].hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="authDataGroup.controls['login'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="auth-form_field" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="min 6 symbols">
+        <mat-error *ngIf="authDataGroup.controls['password'].hasError('required')">
+          Password <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="authDataGroup.controls['password'].hasError('minlength')">
+          Password must be <strong>at least 6 characters</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="auth-form_field" appearance="fill" *ngIf="isSignUp">
+        <mat-label>Re-enter Password</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+
+        <mat-error *ngIf="authDataGroup.controls['confirmPassword'].hasError('required')">
+          Confirm password <strong>required</strong>
+        </mat-error>
+
+        <div>{{authDataGroup.errors?.['notmatched']}}</div>
+
+<!--        <mat-error *ngIf="isOk">-->
+<!--          Password must be <strong>at least 666 characters</strong>-->
+<!--        </mat-error>-->
+<!--        <mat-error *ngIf="authDataGroup.errors?.['notmatched']">-->
+<!--          Password must be <strong>at least 6 characters</strong>-->
+<!--        </mat-error>-->
+        <mat-error *ngIf="authDataGroup.hasError('notmatched')">
+          Passwords do  <strong>not match</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="auth-form_btn">
+      <button mat-raised-button (click)="changeCheck()">isCheck</button>
+      <button mat-raised-button (click)="onAuth()">Login</button>
+<!--      <a mat-raised-button href="https://www.google.com/" target="_blank">Login</a>-->
+    </div>
+  </form>
+</div>
