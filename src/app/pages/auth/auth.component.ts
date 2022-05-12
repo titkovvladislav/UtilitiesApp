@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from "@angular/forms";
 import { passwordMatchingValidator } from "./tools/customValidate";
 import { ErrorStateMatcher } from "@angular/material/core";
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,42 +22,38 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AuthComponent implements OnInit {
 
-  constructor() {
-  }
-  matcher = new MyErrorStateMatcher();
+  constructor(private authService: AuthService, private route: Router) { }
 
-
+  public matcher = new MyErrorStateMatcher();
   public authDataGroup = new FormGroup({
-    login: new FormControl('', [Validators.required, Validators.email,]),
+    email: new FormControl('', [Validators.required, Validators.email,]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl('', [Validators.required])
   }, {validators: passwordMatchingValidator})
   public isSignUp = false
   public formTitle = ['Login', 'Sign Up']
-  public isOk = true
 
-
-  ngOnInit(): void {
-
-  }
-  public changeCheck(){
-    this.isOk = !this.isOk
-  }
+  ngOnInit(): void { }
 
   public changeForm() {
     this.isSignUp = !this.isSignUp
-    //console.log('isSignUp', this.isSignUp)
     this.formTitle.reverse()
   }
 
   public onAuth() {
-
     console.log('-------------------------------------')
-    console.log('click')
-    console.log('authDataGroup', this.authDataGroup.controls)
-    //console.log('authData-boolean', this.authDataGroup.value.password === this.authDataGroup.value.confirmPassword)
-    //console.log('authData-password', this.authDataGroup.value.password )
-    //console.log('authData-rePassword', this.authDataGroup.value.confirmPassword)
+    if (this.isSignUp) {
+      console.log('get registration')
+      this.authService.registration(this.authDataGroup.value).subscribe(value => localStorage.setItem('token', value.idToken))
+
+      return
+    }
+
+    this.authService.authentication(this.authDataGroup.value).subscribe(value => {
+      localStorage.setItem('token', value.idToken)
+      this.route.navigate(['/'])
+    })
+
     console.log('-------------------------------------')
   }
 

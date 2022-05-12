@@ -15,11 +15,11 @@
 
       <mat-form-field class="auth-form_field" appearance="fill">
         <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="login" placeholder="Ex. pat@example.com">
-        <mat-error *ngIf="authDataGroup.controls['login'].hasError('email')">
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="authDataGroup.controls['email'].hasError('email')">
           Please enter a valid email address
         </mat-error>
-        <mat-error *ngIf="authDataGroup.controls['login'].hasError('required')">
+        <mat-error *ngIf="authDataGroup.controls['email'].hasError('required')">
           Email is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -48,8 +48,11 @@
 
     </div>
     <div class="auth-form_btn">
-      <button mat-raised-button (click)="changeCheck()">isCheck</button>
-      <button mat-raised-button (click)="onAuth()">Login</button>
+      <button mat-raised-button
+              (click)="onAuth()"
+              disabled="{{authDataGroup.controls['email'].invalid || authDataGroup.controls['password'].invalid || this.authDataGroup.controls['confirmPassword'].invalid && isSignUp }}">
+        Login
+      </button>
 <!--      <a mat-raised-button href="https://www.google.com/" target="_blank">Login</a>-->
     </div>
   </form>
