@@ -38,19 +38,9 @@
       <mat-form-field class="auth-form_field" appearance="fill" *ngIf="isSignUp">
         <mat-label>Re-enter Password</mat-label>
         <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
-
         <mat-error *ngIf="authDataGroup.controls['confirmPassword'].hasError('required')">
           Confirm password <strong>required</strong>
         </mat-error>
-
-        <div>{{authDataGroup.errors?.['notmatched']}}</div>
-
-<!--        <mat-error *ngIf="isOk">-->
-<!--          Password must be <strong>at least 666 characters</strong>-->
-<!--        </mat-error>-->
-<!--        <mat-error *ngIf="authDataGroup.errors?.['notmatched']">-->
-<!--          Password must be <strong>at least 6 characters</strong>-->
-<!--        </mat-error>-->
         <mat-error *ngIf="authDataGroup.hasError('notmatched')">
           Passwords do  <strong>not match</strong>
         </mat-error>

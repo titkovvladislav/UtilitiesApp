@@ -6,26 +6,13 @@ import { ErrorStateMatcher } from "@angular/material/core";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control?.invalid && control?.parent?.dirty && control?.touched);
-    const invalidParent = !!(control?.parent?.invalid && control?.parent?.dirty );
-    console.log('-----')
-    console.log('control?.invalid',control?.invalid)
-    console.log('control?.parent?.dirty',control?.parent?.dirty)
-    console.log('control?.dirty',control?.touched)
-    console.log('invalidCtrl',invalidCtrl)
-    console.log('-----')
-
+    const invalidCtrl = !!(control?.invalid  && control?.touched);
+    const invalidParent = !!(control?.parent?.invalid && control?.dirty );
 
     return invalidCtrl || invalidParent;
   }
 }
 
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
