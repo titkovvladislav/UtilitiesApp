@@ -2,13 +2,26 @@
   <div class="dashboard-header">
     <div class="greetings">Welcome back <span>Mathew</span>!</div>
     <app-weather></app-weather>
-    <div class="date">
+    <div class="date" *ngIf="child?.weather | async as weather">
       <span></span>
-      Tue, 24 Nov 2021
+      {{weather.now_dt | date:'EEE, dd LLL y'}}
     </div>
   </div>
   <div class="dashboard-main">
+    <div class="dashboard-main-head">
+      <div class="organization-info">
+        <p>Your organization:</p>
+        <div class="organization-info-body">
+          <div>
+            <p><b>Name:</b> Super-organization</p>
+            <p><b>Number of apartments:</b> 5</p>
+            <p><b>Number of residents:</b> 15</p>
 
+          </div>
+
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { WeatherComponent } from "../utils/weather/weather.component";
+import { UtilitiesService } from "../../services/utilities.service";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,12 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild(WeatherComponent) child!: WeatherComponent
 
-  constructor() { }
-
+  constructor(private utilitiesService: UtilitiesService) {}
 
   ngOnInit(): void {
-
+    this.utilitiesService.getApartment()
   }
+
 
 }

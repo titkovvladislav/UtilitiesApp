@@ -1,5 +1,5 @@
 <div class="weather" >
-  <div class="weather-now" *ngIf="!!weather?.fact">
+  <div class="weather-now" *ngIf="weather | async as weather">
     <img  src="https://yastatic.net/weather/i/icons/funky/dark/{{weather.fact.icon}}.svg">
     <div>
       <p>{{weather.fact.temp}}°C</p>
