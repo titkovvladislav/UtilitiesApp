@@ -1,0 +1,10 @@
+<div class="weather" >
+  <div class="weather-now" *ngIf="!!weather?.fact">
+    <img  src="https://yastatic.net/weather/i/icons/funky/dark/{{weather.fact.icon}}.svg">
+    <div>
+      <p>{{weather.fact.temp}}°C</p>
+      <p>feels like: {{weather.fact.feels_like}}°C</p>
+    </div>
+    <p>It's <b>{{weather.fact.condition}}</b> now</p>
+  </div>
+</div>

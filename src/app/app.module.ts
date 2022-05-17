@@ -17,6 +17,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
+import { AngularFireModule } from "@angular/fire/compat";
+import { environment } from "../environments/environment";
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { WeatherComponent } from './pages/utils/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -26,19 +32,24 @@ import { HttpClientModule } from "@angular/common/http";
     DashboardComponent,
     SettingsComponent,
     ReportsComponent,
-    AuthComponent
+    AuthComponent,
+    NotificationsComponent,
+    CalendarComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
 
   ],
   providers: [],

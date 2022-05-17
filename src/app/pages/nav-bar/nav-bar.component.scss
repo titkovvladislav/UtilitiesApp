@@ -1,4 +1,4 @@
-@keyframes rotate-logo {
+@keyframes rotate-logo-5 {
   from {
     transform: rotate(0);
     transform-origin: center;
@@ -8,7 +8,7 @@
     transform: rotate(360deg);
   }
 }
-@keyframes rotate-logo-2 {
+@keyframes rotate-logo-4 {
   0% {
     transform: rotate(0);
   }
@@ -25,7 +25,32 @@
   100% {
     transform: rotate(0);
   }
+}
+@keyframes rotate-logo-3 {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
 
+  }
+  to {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
+
+}
+@keyframes rotate-logo-2 {
+
+}
+@keyframes rotate-logo-1 {
+  from {
+    transform-origin: center;
+    transform: rotate(0);
+
+  }
+  to {
+    transform-origin: center;
+    transform: rotate(90deg);
+  }
 }
 .nav-bar {
   display: flex;
@@ -71,37 +96,49 @@
         }
       }
       &:nth-child(1){
+        & a:hover span{
+          animation-duration: 1s;
+          animation-name: rotate-logo-1;
+        }
         & span {
-          background: no-repeat url("/assets/img/category.svg") ;
+          background: no-repeat url("/assets/img/category.svg") center  ;
         }
       }
       &:nth-child(2){
+        & a:hover span {
+          transition: transform 800ms;
+          transform: scale(1.2);
+        }
         & span {
-          background: no-repeat url("/assets/img/calendar.svg") ;
+          background: no-repeat url("/assets/img/calendar.svg") center ;
         }
       }
       &:nth-child(3){
+        & a:hover span {
+          animation-duration: 2s;
+          animation-name: rotate-logo-3;
+        }
         & span {
-          background: no-repeat url("/assets/img/pie-chart.svg") ;
+          background: no-repeat url("/assets/img/pie-chart.svg") center;
         }
       }
       &:nth-child(4){
         & a:hover span{
           animation-duration: 3s;
-          animation-name: rotate-logo-2;
+          animation-name: rotate-logo-4;
           transform-origin: center;
         }
         & span {
-          background: no-repeat url("/assets/img/notification.svg") ;
+          background: no-repeat url("/assets/img/notification.svg") center;
         }
       }
       &:nth-child(5){
         & a:hover span{
           animation-duration: 3s;
-          animation-name: rotate-logo;
+          animation-name: rotate-logo-5;
         }
         & span {
-          background: no-repeat url("/assets/img/settings.svg") ;
+          background: no-repeat url("/assets/img/settings.svg") center;
 
         }
       }
@@ -156,4 +193,8 @@
 }
 .user-menu {
   transform: rotate(90deg);
+}
+
+.active-link {
+  font-weight: 600;
 }

@@ -1,0 +1,20 @@
+.weather {
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+  border-radius: 15px ;
+  background: #EFEFF1;
+  padding: 5px;
+}
+
+.weather-now,
+.weather-next {
+  display: flex;
+  & p, div {
+    align-self: center;
+    margin: 0 10px;
+  }
+  & div + p {
+    font-size: 20px;
+  }
+}

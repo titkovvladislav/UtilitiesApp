@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { authUser, resUserData } from "../models/users.model";
+import { AuthUserI, ResUserDataI } from "../models/users.model";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -9,24 +9,24 @@ import { Observable } from "rxjs";
 })
 export class AuthService {
 
-  constructor( private _HTTP: HttpClient) { }
+  constructor( private _HTTP: HttpClient ) { }
 
-  authentication(authData: authUser): Observable<resUserData>{
+  authentication(authData: AuthUserI): Observable<ResUserDataI>{
     const body = {
       email: authData.email,
       password: authData.password,
       returnSecureToken: true
     }
 
-    return this._HTTP.post<resUserData>(environment.authUrl, body)
+    return this._HTTP.post<ResUserDataI>(environment.authUrl, body)
   }
 
-  registration(regData: authUser): Observable<resUserData>{
+  registration(regData: AuthUserI): Observable<ResUserDataI>{
     const body = {
       email: regData.email,
       password: regData.password,
       returnSecureToken: true
     }
-    return this._HTTP.post<resUserData>(environment.regUrl, body)
+    return this._HTTP.post<ResUserDataI>(environment.regUrl, body)
   }
 }

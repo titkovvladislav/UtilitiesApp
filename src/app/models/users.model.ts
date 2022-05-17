@@ -1,10 +1,10 @@
-export interface authUser {
+export interface AuthUserI {
   email: string,
   password: string,
   confirmPassword: string
 }
 
-export interface resUserData {
+export interface ResUserDataI {
   kind: string,
   localId: string,
   email: string,

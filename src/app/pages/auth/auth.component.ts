@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from "@angular/forms";
 import { passwordMatchingValidator } from "./tools/customValidate";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { Subject, takeUntil } from "rxjs";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,41 +21,44 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnDestroy {
 
   constructor(private authService: AuthService, private route: Router) { }
 
+  private unsubscribe$: Subject<void> = new Subject<void>()
   public matcher = new MyErrorStateMatcher();
   public authDataGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email,]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl('', [Validators.required])
-  }, {validators: passwordMatchingValidator})
-  public isSignUp = false
-  public formTitle = ['Login', 'Sign Up']
+  }, {validators: passwordMatchingValidator});
+  public isSignUp: boolean = false
+  public formTitle: Array<string> = ['Login', 'Sign Up']
 
-  ngOnInit(): void { }
-
-  public changeForm() {
-    this.isSignUp = !this.isSignUp
-    this.formTitle.reverse()
+  public changeForm(): void {
+    this.isSignUp = !this.isSignUp;
+    this.formTitle.reverse();
   }
 
-  public onAuth() {
-    console.log('-------------------------------------')
+  public onAuth(): void {
     if (this.isSignUp) {
-      console.log('get registration')
-      this.authService.registration(this.authDataGroup.value).subscribe(value => localStorage.setItem('token', value.idToken))
+      this.authService.registration(this.authDataGroup.value)
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe(value => localStorage.setItem('token', value.idToken));
+      return;
+    };
 
-      return
-    }
+    this.authService.authentication(this.authDataGroup.value)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(value => {
+      localStorage.setItem('token', value.idToken);
+      this.route.navigate(['/']);
+    });
+  };
 
-    this.authService.authentication(this.authDataGroup.value).subscribe(value => {
-      localStorage.setItem('token', value.idToken)
-      this.route.navigate(['/'])
-    })
-
-    console.log('-------------------------------------')
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }
