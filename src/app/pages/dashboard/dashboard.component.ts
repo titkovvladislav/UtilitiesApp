@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(WeatherComponent) child!: WeatherComponent
 
+  public todayDate = new Date()
   constructor(private utilitiesService: UtilitiesService) {}
 
   ngOnInit(): void {

@@ -69,7 +69,7 @@ export interface WeatherForecastsI {
   hour_ts: number
 }
 
-export interface WeatherI {
+export interface CurrentWeatherI {
   now: number;
   now_dt: string;
   info: WeatherInfoI;
@@ -77,4 +77,9 @@ export interface WeatherI {
   forecasts: WeatherForecastsI;
   geo_object: object,
   yesterday: object
+}
+
+export interface WeatherBDI {
+  currentWeather: CurrentWeatherI;
+  id: string;
 }

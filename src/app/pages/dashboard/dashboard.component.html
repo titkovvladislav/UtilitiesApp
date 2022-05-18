@@ -2,9 +2,9 @@
   <div class="dashboard-header">
     <div class="greetings">Welcome back <span>Mathew</span>!</div>
     <app-weather></app-weather>
-    <div class="date" *ngIf="child?.weather | async as weather">
+    <div class="date">
       <span></span>
-      {{weather.now_dt | date:'EEE, dd LLL y'}}
+      {{todayDate | date:'EEE, dd LLL y'}}
     </div>
   </div>
   <div class="dashboard-main">

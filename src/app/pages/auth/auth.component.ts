@@ -25,20 +25,20 @@ export class AuthComponent implements OnDestroy {
 
   constructor(private authService: AuthService, private route: Router) { }
 
-  private unsubscribe$: Subject<void> = new Subject<void>()
+  private unsubscribe$: Subject<void> = new Subject<void>();
   public matcher = new MyErrorStateMatcher();
   public authDataGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email,]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl('', [Validators.required])
   }, {validators: passwordMatchingValidator});
-  public isSignUp: boolean = false
-  public formTitle: Array<string> = ['Login', 'Sign Up']
+  public isSignUp: boolean = false;
+  public formTitle: Array<string> = ['Login', 'Sign Up'];
 
   public changeForm(): void {
     this.isSignUp = !this.isSignUp;
     this.formTitle.reverse();
-  }
+  };
 
   public onAuth(): void {
     if (this.isSignUp) {
@@ -59,6 +59,6 @@ export class AuthComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
+  };
 
 }

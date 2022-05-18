@@ -6,7 +6,7 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 })
 export class UtilitiesService {
 
-  constructor( private afs: AngularFirestore) {}
+  constructor( private afs: AngularFirestore ) {}
 
   getApartment(){
     this.afs.collection('utilities2/novocherkassk/stepnaya_71').valueChanges().subscribe(value => console.log('stepnaya_71-kol:',value))
