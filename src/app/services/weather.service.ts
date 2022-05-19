@@ -18,7 +18,7 @@ export class WeatherService {
     this.currentWeather$ = this._HTTP.get<CurrentWeatherI>(environment.weather.url)
   }
 
-  public getWeather(): Observable<CurrentWeatherI>{
+  public getWeather(): Observable<CurrentWeatherI> {
     return this.afs.collection<WeatherBDI>('weather').valueChanges()
       .pipe(
         take(1),
@@ -27,23 +27,19 @@ export class WeatherService {
           if(this.checkDate(value.currentWeather.now)){
             return of(value.currentWeather)
           } else {
-            this.deleteWeather(value.id)
-            return this.currentWeather$
+            this.deleteWeather(value.id);
+            return this.currentWeather$.pipe(tap(value2 => this.postWeather(value2)))
           }
         }),
-        tap(value => {
-          if (!this.checkDate(value.now)){
-            return this.postWeather(value)
-          }
-        }),
-
+        tap(value1 => console.log('value111',value1)),
       )
   }
 
+
   private checkDate( date:number ): boolean {
-    const formatDate = +`${date}000`;
-    const verifiableDate = new Date(formatDate).toString().slice(0,18);
-    const correctDate: any = new Date().toString().slice(0,18);
+    const formatDate: number = +`${date}000`;
+    const verifiableDate: string = new Date(formatDate).toString().slice(0,18);
+    const correctDate: string = new Date().toString().slice(0,18);
 
     return correctDate === verifiableDate;
   }
