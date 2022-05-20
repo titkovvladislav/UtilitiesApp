@@ -1,10 +1,10 @@
 <div class="weather" >
   <div class="weather-now" *ngIf="weather | async as weather">
-    <img  src="https://yastatic.net/weather/i/icons/funky/dark/{{weather.fact.icon}}.svg">
+    <img  src="https://yastatic.net/weather/i/icons/funky/dark/{{weather.icon}}.svg">
     <div>
-      <p>{{weather.fact.temp}}°C</p>
-      <p>feels like: {{weather.fact.feels_like}}°C</p>
+      <p>{{weather.temp}}°C</p>
+      <p>feels like: {{weather.feels_like}}°C</p>
     </div>
-    <p>It's <b>{{weather.fact.condition}}</b> now</p>
+    <p>It's <b>{{weather.condition}}</b> now</p>
   </div>
 </div>

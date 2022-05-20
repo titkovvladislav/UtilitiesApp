@@ -46,7 +46,7 @@ export class AuthComponent implements OnDestroy {
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe(value => localStorage.setItem('token', value.idToken));
       return;
-    };
+    }
 
     this.authService.authentication(this.authDataGroup.value)
       .pipe(takeUntil(this.unsubscribe$))
