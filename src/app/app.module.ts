@@ -21,9 +21,10 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { WeatherComponent } from './pages/utils/weather/weather.component';
 import { StoreModule } from "@ngrx/store";
-import { userReducer } from "./store/reducers/user.reducers";
+import { appReducer } from "./store/app.reducer";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    StoreModule.forRoot({user: userReducer}),
+    StoreModule.forRoot({ state: appReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],

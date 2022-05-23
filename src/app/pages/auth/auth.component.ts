@@ -6,7 +6,7 @@ import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { Store } from "@ngrx/store";
-import { add } from "../../store/actions/user.actions";
+import { saveUser } from "../../store/app.actions";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -52,7 +52,7 @@ export class AuthComponent implements OnDestroy {
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe(value => {
           localStorage.setItem('token', value.idToken)
-          this.store.dispatch(add({user: value}))
+          this.store.dispatch(saveUser({user: value}))
         });
       return;
     }
@@ -61,6 +61,7 @@ export class AuthComponent implements OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
 
       .subscribe(value => {
+        this.store.dispatch(saveUser({user: value}))
         localStorage.setItem('token', value.idToken);
         this.route.navigate(['/']);
     });

@@ -38,11 +38,11 @@
     </ul>
   </div>
 
-  <div class="about-user">
+  <div class="about-user" *ngIf="( user$ | async ) as user">
     <div class="user-logo"></div>
     <div class="user-info">
-      <p>Mathew Perry</p>
-      <p>mathewperry@xyz.com</p>
+      <p>{{user.fullName.firstName}} {{user.fullName.secondName}}</p>
+      <p>{{user.email}}</p>
     </div>
     <div class="user-menu">
       <button mat-icon-button [matMenuTriggerFor]="menu">
