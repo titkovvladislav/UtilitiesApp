@@ -1,16 +1,21 @@
 export interface AuthUserI {
-  email: string,
-  password: string,
-  confirmPassword: string
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface FullNameUserI {
+  firstName:  string;
+  secondName: string;
+  patronymic: string;
 }
 
 export interface ResUserDataI {
-  kind: string,
-  localId: string,
-  email: string,
-  displayName: string,
-  idToken: string,
-  registered: boolean,
-  refreshToken: string,
-  expiresIn: string
+  email: string;
+  login: string;
+  organization: string;
+  fullName: FullNameUserI;
+  idToken: string;
+  //refreshToken: string;
+  //expiresIn: string;
 }

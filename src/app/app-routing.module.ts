@@ -11,6 +11,7 @@ import { CalendarComponent } from "./pages/calendar/calendar.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'calendar', component: CalendarComponent },
       { path: 'reports', component: ReportsComponent },

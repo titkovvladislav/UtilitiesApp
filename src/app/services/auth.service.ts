@@ -15,7 +15,6 @@ export class AuthService {
     const body = {
       email: authData.email,
       password: authData.password,
-      returnSecureToken: true
     }
 
     return this._HTTP.post<ResUserDataI>(environment.authUrl, body)

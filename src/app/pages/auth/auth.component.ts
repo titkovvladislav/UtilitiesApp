@@ -1,10 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from "@angular/forms";
 import { passwordMatchingValidator } from "./tools/customValidate";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
+import { Store } from "@ngrx/store";
+import { add } from "../../store/actions/user.actions";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,7 +25,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AuthComponent implements OnDestroy {
 
-  constructor(private authService: AuthService, private route: Router) { }
+  constructor(
+    private authService: AuthService,
+    private route: Router,
+    private store: Store
+  ) { }
 
   private unsubscribe$: Subject<void> = new Subject<void>();
   public matcher = new MyErrorStateMatcher();
@@ -44,15 +50,19 @@ export class AuthComponent implements OnDestroy {
     if (this.isSignUp) {
       this.authService.registration(this.authDataGroup.value)
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(value => localStorage.setItem('token', value.idToken));
+        .subscribe(value => {
+          localStorage.setItem('token', value.idToken)
+          this.store.dispatch(add({user: value}))
+        });
       return;
     }
 
     this.authService.authentication(this.authDataGroup.value)
       .pipe(takeUntil(this.unsubscribe$))
+
       .subscribe(value => {
-      localStorage.setItem('token', value.idToken);
-      this.route.navigate(['/']);
+        localStorage.setItem('token', value.idToken);
+        this.route.navigate(['/']);
     });
   };
 

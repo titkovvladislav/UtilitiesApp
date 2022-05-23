@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { WeatherComponent } from "../utils/weather/weather.component";
+import { Component, OnInit } from '@angular/core';
 import { UtilitiesService } from "../../services/utilities.service";
 
 
@@ -10,10 +9,8 @@ import { UtilitiesService } from "../../services/utilities.service";
 })
 export class DashboardComponent implements OnInit {
 
-  @ViewChild(WeatherComponent) child!: WeatherComponent
-
   public todayDate = new Date()
-  constructor(private utilitiesService: UtilitiesService) {}
+  constructor( private utilitiesService: UtilitiesService ) {}
 
   ngOnInit(): void {
     this.utilitiesService.getApartment()
