@@ -13,14 +13,13 @@ import { Observable } from "rxjs";
 export class NavBarComponent implements OnInit {
 
   public image = '/assets/img/mainLogo.png'
-  public user$!: Observable<any>
+  public user$: Observable<ResUserDataI> = this.store.select(selectFeatureUser)
   constructor(
     private route: Router,
     private store: Store
     ) { }
 
   ngOnInit(): void {
-    this.user$ = this.store.select(selectFeatureUser)
   }
 
   public logOut(): void {
