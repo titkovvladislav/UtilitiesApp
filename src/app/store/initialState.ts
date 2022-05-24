@@ -1,17 +1,14 @@
-import { ResUserDataI } from "../models/users.model";
+import { UtilitiesState } from "../models/store.model";
 
-export interface UtilitiesState {
-  user: ResUserDataI;
-}
 export const initialState: UtilitiesState = {
   user: {
-    email: '',
-    login: '',
-    organization: '',
+    email: null,
+    login: null,
+    organization: null,
     fullName: {
-      firstName:  '',
-      secondName: '',
-      patronymic: '',
+      firstName:  null,
+      secondName: null,
+      patronymic: null,
     },
     idToken: '',
   }

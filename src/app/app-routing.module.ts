@@ -12,11 +12,11 @@ import { CalendarComponent } from "./pages/calendar/calendar.component";
 const routes: Routes = [
   { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'calendar', component: CalendarComponent },
-      { path: 'reports', component: ReportsComponent },
-      { path: 'notifications', component: NotificationsComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+      { path: 'calendar', component: CalendarComponent, data: { title: 'Schedule Reminder' } },
+      { path: 'reports', component: ReportsComponent, data: { title: 'Reports' } },
+      { path: 'notifications', component: NotificationsComponent, data: { title: 'Notifications' } },
+      { path: 'settings', component: SettingsComponent, data: { title: 'Settings' } },
     ] },
   { path: 'login', component: AuthComponent }
 ];
