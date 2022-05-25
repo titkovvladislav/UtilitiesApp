@@ -10,7 +10,7 @@ export interface UtilitiesState {
   user: ResUserDataI;
 }
 
-export interface appStateI {
+export interface AppStateI {
   appState: UtilitiesState;
   router: RouterReducerState<RouterStateTitle>;
 }

@@ -10,7 +10,7 @@ export class CustomRouterStateSerializer implements RouterStateSerializer<Router
       route = route.firstChild;
     }
     const title = route.data['title'];
-    const url = routerState.url
+    const url = routerState.url;
     return { title, url };
   }
 }

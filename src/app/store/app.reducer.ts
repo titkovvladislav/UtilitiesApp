@@ -2,7 +2,7 @@ import { ActionReducerMap, createReducer, on } from "@ngrx/store";
 import { initialState } from "./initialState";
 import { saveUser } from "./app.actions";
 import { routerReducer } from "@ngrx/router-store";
-import { appStateI } from "../models/store.model";
+import { AppStateI } from "../models/store.model";
 
 export const appReducer = createReducer(
   initialState,
@@ -14,7 +14,7 @@ export const appReducer = createReducer(
   })
 )
 
-export const reducer: ActionReducerMap<appStateI> = {
+export const reducer: ActionReducerMap<AppStateI> = {
   appState: appReducer,
   router: routerReducer
 }
