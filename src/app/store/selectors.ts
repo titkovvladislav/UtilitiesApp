@@ -1,5 +1,5 @@
-import { UtilitiesState } from "./initialState";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { UtilitiesState } from "../models/store.model";
 
 const featureKey = 'state';
 

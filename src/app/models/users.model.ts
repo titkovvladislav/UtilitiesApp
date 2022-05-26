@@ -5,15 +5,15 @@ export interface AuthUserI {
 }
 
 export interface FullNameUserI {
-  firstName:  string;
-  secondName: string;
-  patronymic: string;
+  firstName:  string | null;
+  secondName: string | null;
+  patronymic: string | null;
 }
 
 export interface ResUserDataI {
-  email: string;
-  login: string;
-  organization: string;
+  email: string | null;
+  login: string | null;
+  organization: string | null;
   fullName: FullNameUserI;
   idToken: string;
   //refreshToken: string;

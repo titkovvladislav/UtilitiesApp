@@ -19,11 +19,15 @@ import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { WeatherComponent } from './pages/utils/weather/weather.component';
+import { WeatherComponent } from './pages/widgets/weather/weather.component';
 import { StoreModule } from "@ngrx/store";
-import { appReducer } from "./store/app.reducer";
+import { reducer } from "./store/app.reducer";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomRouterStateSerializer } from "./utils/CustomRouterStateSerializer";
+import { AppEffect } from "./store/app.effect";
 
 
 @NgModule({
@@ -50,8 +54,10 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    StoreModule.forRoot({ state: appReducer }),
+    StoreModule.forRoot(reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot({serializer: CustomRouterStateSerializer}),
+    EffectsModule.forRoot([AppEffect]),
   ],
   providers: [],
   bootstrap: [AppComponent]
