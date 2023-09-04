@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from "@angular/forms";
 import { passwordMatchingValidator } from "./tools/customValidate";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { AuthService } from "../../services/auth.service";
@@ -10,7 +10,7 @@ import { saveUser } from "../../store/app.actions";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidCtrl = !!(control?.invalid  && control?.touched);
     const invalidParent = !!(control?.parent?.invalid && control?.dirty );
 
@@ -33,10 +33,10 @@ export class AuthComponent implements OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject<void>();
   public matcher = new MyErrorStateMatcher();
-  public authDataGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email,]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.required])
+  public authDataGroup = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email,]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmPassword: new UntypedFormControl('', [Validators.required])
   }, {validators: passwordMatchingValidator});
   public isSignUp: boolean = false;
   public formTitle: Array<string> = ['Login', 'Sign Up'];
