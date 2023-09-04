@@ -12,6 +12,6 @@ export class WeatherService {
   constructor( private _HTTP: HttpClient ) {}
 
   public getWeather(): Observable<CurrentWeatherI> {
-    return this._HTTP.get<CurrentWeatherI>(environment.weather.url)
+    return this._HTTP.get<CurrentWeatherI>(environment.weather.url);
   }
 }

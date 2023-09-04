@@ -5,7 +5,7 @@
 // Plus imports for other components in your app.
 
 $custom-typography: mat.define-typography-config(
-  $font-family: 'Poppins' sans-serif,
+  $font-family: 'Montserrat',
 );
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -38,7 +38,23 @@ $utilities-app-theme: mat.define-light-theme((
 @include mat.all-component-themes($utilities-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-html, body { height: 100%; }
-body { margin: 0; font-family: "Poppins", sans-serif; }
+//@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+//font-family: 'Rubik Iso', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap');
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(/assets/font/Montserrat-Light.ttf) format("truetype");
+  font-weight:300;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(/assets/font/Montserrat-Regular.ttf) format("truetype");
+  font-weight:400;
+}
+
+html, body { height: 100%;}
+body { margin: 0; }
 @import "normalize.css";
+@import "app/shared/styles/colors.css";

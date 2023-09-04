@@ -8,8 +8,6 @@ import { UtilitiesService } from "../../services/utilities.service";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  public todayDate = new Date()
   constructor( private utilitiesService: UtilitiesService ) {}
 
   ngOnInit(): void {

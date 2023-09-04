@@ -1,6 +1,6 @@
 import { RouterStateSerializer } from "@ngrx/router-store";
 import { RouterStateSnapshot } from "@angular/router";
-import { RouterStateTitle } from "../models/store.model";
+import { RouterStateTitle } from "../../models/store.model";
 
 export class CustomRouterStateSerializer implements RouterStateSerializer<RouterStateTitle>{
 

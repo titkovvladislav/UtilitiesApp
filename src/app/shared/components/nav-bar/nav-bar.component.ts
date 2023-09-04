@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { ResUserDataI } from "../../models/users.model";
-import { selectFeatureUser } from "../../store/selectors";
+import { ResUserDataI } from "../../../models/users.model";
+import { selectFeatureUser } from "../../../store/selectors";
 import { Observable } from "rxjs";
 
 @Component({

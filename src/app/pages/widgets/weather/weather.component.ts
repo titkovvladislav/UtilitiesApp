@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WeatherService } from "../../../services/weather.service";
 import { CurrentWeatherI } from "../../../models/weather.model";
 import { Observable } from "rxjs";
@@ -9,14 +9,12 @@ import { Observable } from "rxjs";
   styleUrls: ['./weather.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeatherComponent implements OnInit {
-
-  constructor( private weatherApi: WeatherService ) { }
+export class WeatherComponent {
 
   public weather!: Observable<CurrentWeatherI>;
 
-  ngOnInit(): void {
-    this.weather = this.weatherApi.getWeather();
+  constructor( private weatherApi: WeatherService ) {
+    this.weather = weatherApi.getWeather();
   }
 
 

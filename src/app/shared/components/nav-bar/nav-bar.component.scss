@@ -101,7 +101,7 @@
           animation-name: rotate-logo-1;
         }
         & span {
-          background: no-repeat url("/assets/img/category.svg") center  ;
+          background: no-repeat url("/src/assets/img/category.svg") center  ;
         }
       }
       &:nth-child(2){
@@ -110,7 +110,7 @@
           transform: scale(1.2);
         }
         & span {
-          background: no-repeat url("/assets/img/calendar.svg") center ;
+          background: no-repeat url("/src/assets/img/calendar.svg") center ;
         }
       }
       &:nth-child(3){
@@ -119,7 +119,7 @@
           animation-name: rotate-logo-3;
         }
         & span {
-          background: no-repeat url("/assets/img/pie-chart.svg") center;
+          background: no-repeat url("/src/assets/img/pie-chart.svg") center;
         }
       }
       &:nth-child(4){
@@ -129,7 +129,7 @@
           transform-origin: center;
         }
         & span {
-          background: no-repeat url("/assets/img/notification.svg") center;
+          background: no-repeat url("/src/assets/img/notification.svg") center;
         }
       }
       &:nth-child(5){
@@ -138,7 +138,7 @@
           animation-name: rotate-logo-5;
         }
         & span {
-          background: no-repeat url("/assets/img/settings.svg") center;
+          background: no-repeat url("/src/assets/img/settings.svg") center;
 
         }
       }
@@ -165,7 +165,7 @@
 .user-logo {
   width: 50px;
   height: 50px;
-  background-image: url("/assets/img/avatar.png");
+  background-image: url("/src/assets/img/avatar.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50%;
